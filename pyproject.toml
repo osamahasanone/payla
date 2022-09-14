@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "payla"
+version = "0.1.0"
+description = ""
+authors = ["osamahasanone <osamahasanone@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "3.9.12"
+Django = "3.2"
+psycopg2-binary = "^2.9.3"
+
+[tool.poetry.dev-dependencies]
+pytest-django = "^4.5.2"
+pre-commit = "^2.20.0"
+pytest = "^7.1.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
