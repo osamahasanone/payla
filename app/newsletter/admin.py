@@ -1,13 +1,13 @@
 from django.contrib import admin
 
-from .models import Subscriber
+from .models import Client
 
 
-@admin.register(Subscriber)
-class SubscriberAdmin(admin.ModelAdmin):
-    list_display = ["email", "name"]
-    search_fields = ["id", "email", "name", "subscribed"]
+@admin.register(Client)
+class ClientAdmin(admin.ModelAdmin):
+    list_display = ["email", "first_name", "last_name"]
+    search_fields = ["id", "email", "first_name", "last_name" "subscribed"]
     ordering = ["id"]
     readonly_fields = ["id"]
-    fields = ["id", "email", "name", "subscribed"]
+    fields = ["id", "email", "first_name", "last_name", "subscribed"]
     list_per_page = 25
