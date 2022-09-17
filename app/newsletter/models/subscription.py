@@ -9,6 +9,11 @@ from django.utils import timezone
 from newsletter.models import Client
 
 
+class ClientTransactionQuerySet(models.QuerySet):
+    def outdated(self) -> "ClientTransaction":
+        return self.filter(valid_to__lte=timezone.now(), confirmed_at__isnull=True)
+
+
 class ClientTransaction(models.Model):
     id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
     client = models.ForeignKey(Client, on_delete=models.PROTECT)
@@ -16,6 +21,8 @@ class ClientTransaction(models.Model):
     confirmed_at = models.DateTimeField(null=True, blank=True)
     valid_from = models.DateTimeField()
     valid_to = models.DateTimeField()
+
+    objects = ClientTransactionQuerySet.as_manager()
 
     class Meta:
         abstract = True
