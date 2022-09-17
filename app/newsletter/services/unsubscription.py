@@ -3,7 +3,7 @@ from django.utils import timezone
 
 from newsletter.errors import AlreadyUnsubscriber, UnsubscriptionConfirmationFailed
 from newsletter.models import Client, UnsubscriptionAttempt
-from newsletter.services.secret_generator import get_secret
+from newsletter.services.transaction import get_secret
 
 
 def start(client: Client) -> UnsubscriptionAttempt:
