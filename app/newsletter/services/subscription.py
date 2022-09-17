@@ -6,10 +6,10 @@ from newsletter.models import Client, SubscriptionAttempt
 from newsletter.services.secret_generator import get_secret
 
 
-def start(client: Client) -> None:
+def start(client: Client) -> SubscriptionAttempt:
     if client.subscribed:
         raise AlreadySubscriber
-    SubscriptionAttempt.objects.create(
+    return SubscriptionAttempt.objects.create(
         client=client, secret_code=get_secret(SubscriptionAttempt)
     )
 

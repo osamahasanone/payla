@@ -6,10 +6,10 @@ from newsletter.models import Client, UnsubscriptionAttempt
 from newsletter.services.secret_generator import get_secret
 
 
-def start(client: Client) -> None:
+def start(client: Client) -> UnsubscriptionAttempt:
     if not client.subscribed:
         raise AlreadyUnsubscriber
-    UnsubscriptionAttempt.objects.create(
+    return UnsubscriptionAttempt.objects.create(
         client=client, secret_code=get_secret(UnsubscriptionAttempt)
     )
 
