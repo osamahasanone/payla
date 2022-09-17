@@ -9,7 +9,7 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
-            "-b", "--batch", type=int, help="How many email should be sent in one go?"
+            "-b", "--batch", type=int, help="How many emails should be sent in one go?"
         )
 
     def handle(self, *args, **kwargs):
