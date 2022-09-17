@@ -4,5 +4,5 @@ Thanks for you interest in pur newsletter.
 
 Please click the link below to have your subscription completed.
 
--- 
+--
 Confirmation link: {{ url }}
