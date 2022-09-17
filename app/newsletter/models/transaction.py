@@ -32,7 +32,8 @@ class ClientTransaction(models.Model):
 
     def save(self, *args, **kwargs):
         # because valid_from will be None here if we use auto_now_add=True
-        self.valid_from = timezone.now()
+        if not self.valid_from:
+            self.valid_from = timezone.now()
         self.valid_to = self.valid_from + timedelta(
             hours=settings.CONFIRMATION_LINK_VALIDITY_HOURS
         )

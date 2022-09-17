@@ -27,7 +27,9 @@ def newsletter_email_batchs(connection, clients, batch_size):
         if len(emails) == batch_size:
             yield emails
             emails = []
-    yield emails  # for last batch
+    # for last batch, if there are emails
+    if emails:
+        yield emails
 
 
 def send_newsletter_email(clients, batch_size=settings.NEWSLETTER_EMAIL_BATCH_SIZE):
