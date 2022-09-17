@@ -10,4 +10,4 @@ def get_secret(model: ClientTransaction, bytes: int = SECRET_NBYTES) -> str:
     # token_urlsafe function returns unique secrets, but to be more strict:
     if not model.objects.filter(secret_code=secret).exists():
         return secret
-    get_secret()
+    get_secret()  # get new secret if not unique

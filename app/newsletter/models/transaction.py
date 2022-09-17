@@ -18,9 +18,9 @@ class ClientTransaction(models.Model):
     id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
     client = models.ForeignKey(Client, on_delete=models.PROTECT)
     secret_code = models.CharField(max_length=25, unique=True)
-    confirmed_at = models.DateTimeField(null=True, blank=True)
     valid_from = models.DateTimeField()
     valid_to = models.DateTimeField()
+    confirmed_at = models.DateTimeField(null=True, blank=True)
 
     objects = ClientTransactionQuerySet.as_manager()
 
