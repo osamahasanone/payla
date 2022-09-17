@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.core import mail
 from django.template.loader import render_to_string
+from django.urls import reverse
 
 
 def compose_single_newsletter_email(connection, client):
@@ -8,7 +9,10 @@ def compose_single_newsletter_email(connection, client):
         settings.NEWSLETTER_EMAIL_SUBJECT,
         render_to_string(
             settings.NEWSLETTER_EMAIL_EMAIL_TEMPLATE,
-            {"name": client, "url": "dummyyyyyyyyyyyyyyyy"},
+            {
+                "name": client,
+                "url": settings.BASE_URL + reverse("unsubscription_start"),
+            },
         ),
         settings.EMAIL_HOST_USER,
         [client.user.email],

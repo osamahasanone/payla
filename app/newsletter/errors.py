@@ -12,7 +12,23 @@ class AlreadySubscriber(APIException, NewsletterException):
     default_detail = "You are already a subscriber"
 
 
+class AlreadyUnsubscriber(APIException, NewsletterException):
+    status_code = status.HTTP_409_CONFLICT
+    default_code = "AlreadyUnsubscriber"
+    default_detail = "You are not a subscriber"
+
+
 class SubscriptionConfirmationFailed(APIException, NewsletterException):
     status_code = status.HTTP_404_NOT_FOUND
     default_code = "SubscriptionConfirmationFailed"
-    default_detail = "This link is either expired, not existed or already visited"
+    default_detail = (
+        "This link is either expired, not existed or you are already a subscriber"
+    )
+
+
+class UnsubscriptionConfirmationFailed(APIException, NewsletterException):
+    status_code = status.HTTP_404_NOT_FOUND
+    default_code = "UnsubscriptionConfirmationFailed"
+    default_detail = (
+        "This link is either expired, not existed or you are not a subscriber"
+    )

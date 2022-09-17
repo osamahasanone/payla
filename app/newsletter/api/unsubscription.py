@@ -4,19 +4,19 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-from newsletter.services.subscription import confirm as confirm_subscription
-from newsletter.services.subscription import start as start_subscription
+from newsletter.services.unsubscription import confirm as confirm_unsubscription
+from newsletter.services.unsubscription import start as start_unsubscription
 
 
 @permission_classes([IsAuthenticated])
-@api_view(["POST"])
-def subscribe(request: Request) -> Response:
-    start_subscription(request.user.client)
+@api_view(["GET"])
+def unsubscribe(request: Request) -> Response:
+    start_unsubscription(request.user.client)
     return Response({}, status=status.HTTP_200_OK)
 
 
 @permission_classes([IsAuthenticated])
 @api_view()
-def confirm_user_subscription(request: Request, secret_code) -> Response:
-    confirm_subscription(secret_code)
+def confirm_user_unsubscription(request: Request, secret_code) -> Response:
+    confirm_unsubscription(secret_code)
     return Response({}, status=status.HTTP_200_OK)

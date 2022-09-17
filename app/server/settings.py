@@ -145,6 +145,8 @@ NEWSLETTER_EMAIL_EMAIL_TEMPLATE = "newsletter/newsletter.txt"
 CONFIRMATION_LINK_VALIDITY_HOURS = 6
 SUBSCRIPTION_CONFIRMATION_EMAIL_SUBJECT = "One step to complete the subscription"
 SUBSCRIPTION_CONFIRMATION_EMAIL_TEMPLATE = "newsletter/subscription_confirm.txt"
+UNSUBSCRIPTION_CONFIRMATION_EMAIL_SUBJECT = "Are you sure you want to unsubscribe?"
+UNSUBSCRIPTION_CONFIRMATION_EMAIL_TEMPLATE = "newsletter/unsubscription_confirm.txt"
 
 # Auth
 AUTH_USER_MODEL = "core.User"

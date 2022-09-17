@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.template.loader import render_to_string
 
-from newsletter.models import Client, SubscriptionAttempt
+from newsletter.models import Client, SubscriptionAttempt, UnsubscriptionAttempt
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
@@ -21,6 +21,22 @@ def send_confirmation_email_for_subscription_attempt(sender, **kwargs):
             settings.SUBSCRIPTION_CONFIRMATION_EMAIL_SUBJECT,
             render_to_string(
                 settings.SUBSCRIPTION_CONFIRMATION_EMAIL_TEMPLATE,
+                {"name": attempt.client, "url": attempt.confirmation_url},
+            ),
+            settings.EMAIL_HOST_USER,
+            [attempt.client.user.email],
+            fail_silently=False,
+        )
+
+
+@receiver(post_save, sender=UnsubscriptionAttempt)
+def send_confirmation_email_for_unsubscription_attempt(sender, **kwargs):
+    attempt = kwargs["instance"]
+    if kwargs["created"]:
+        send_mail(
+            settings.UNSUBSCRIPTION_CONFIRMATION_EMAIL_SUBJECT,
+            render_to_string(
+                settings.UNSUBSCRIPTION_CONFIRMATION_EMAIL_TEMPLATE,
                 {"name": attempt.client, "url": attempt.confirmation_url},
             ),
             settings.EMAIL_HOST_USER,

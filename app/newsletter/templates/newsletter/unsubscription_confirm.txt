@@ -1,0 +1,8 @@
+Hey {{ name }}!
+
+We are sorry to see you leaving!
+
+If you are sure you want to unsubscribe, please click the link below.
+
+--
+Confirmation link: {{ url }}
