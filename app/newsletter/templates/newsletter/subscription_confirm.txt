@@ -1,8 +1,8 @@
 Hey {{ name }}!
 
-Thanks for you interest in pur newsletter.
+Thanks for you interest in our newsletter.
 
-Please click the link below to have your subscription completed.
+Please click the link below to activate your subscription.
 
 --
 Confirmation link: {{ url }}
