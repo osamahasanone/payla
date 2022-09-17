@@ -139,6 +139,9 @@ EMAIL_HOST_USER = "support@newsletter.de"
 EMAIL_HOST_PASSWORD = ""
 
 # newsletter
+NEWSLETTER_EMAIL_BATCH_SIZE = 2  # for test
+NEWSLETTER_EMAIL_SUBJECT = "Your Newsletter - Enjoy it!"
+NEWSLETTER_EMAIL_EMAIL_TEMPLATE = "newsletter/newsletter.txt"
 CONFIRMATION_LINK_VALIDITY_HOURS = 6
 SUBSCRIPTION_CONFIRMATION_EMAIL_SUBJECT = "One step to complete the subscription"
 SUBSCRIPTION_CONFIRMATION_EMAIL_TEMPLATE = "newsletter/subscription_confirm.txt"

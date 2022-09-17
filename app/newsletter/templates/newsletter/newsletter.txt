@@ -1,0 +1,8 @@
+Hey {{ name }}!
+
+This is our awesome newsletter.
+
+We won't annoy you at all with hourly updates about our products.
+
+--
+Unsubscribe here: {{ url }}
