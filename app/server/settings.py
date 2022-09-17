@@ -27,7 +27,8 @@ SECRET_KEY = "93sl4j#(bqz_266(4m)p+v4pr=-@w^to71(@$1r%ov1**=2o^w"
 DEBUG = True
 
 ALLOWED_HOSTS = ["0.0.0.0"]
-
+PORT = 8000
+BASE_URL = f"http://0.0.0.0:{PORT}"
 
 # Application definition
 
@@ -128,6 +129,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = "/static/"
+
+# Email
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = "localhost"
+EMAIL_PORT = 25
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "support@newsletter.de"
+EMAIL_HOST_PASSWORD = ""
+
+# newsletter
+CONFIRMATION_LINK_VALIDITY_HOURS = 6
+SUBSCRIPTION_CONFIRMATION_EMAIL_SUBJECT = "One step to complete the subscription"
+SUBSCRIPTION_CONFIRMATION_EMAIL_TEMPLATE = "newsletter/subscription_confirm.txt"
 
 # Auth
 AUTH_USER_MODEL = "core.User"
