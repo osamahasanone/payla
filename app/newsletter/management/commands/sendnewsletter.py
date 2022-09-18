@@ -14,7 +14,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         subscribed_clients = Client.objects.subscribed()
-        print(id(subscribed_clients))
         batch_size = kwargs["batch"]
         if batch_size:
             send_newsletter_email(subscribed_clients, batch_size)
