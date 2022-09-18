@@ -52,7 +52,7 @@ Please follow the steps below:
 2.  Log in using one of these users: http://0.0.0.0:8000/auth/jwt/create
 3.  Copy the access token from the response (It will be valid for 24 hours, so no need for the refresh token)
 4.  If you want to do the next steps in browser, please add the extension **ModHeader** to Chrome.
-5.  Add the header: ```JWT your_access_token```
+5.  Add to Authorization header: ```JWT your_access_token```
 6.  To start a subscription: http://0.0.0.0:8000/newsletter/subscription/start
 
     You will see an email containing the confirmation link in the terminal.
